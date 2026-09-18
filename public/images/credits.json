@@ -1,0 +1,149 @@
+{
+  "verified": "2026-09-18",
+  "reuse": "Source pages state free use under Unsplash License. License permits commercial and non-commercial use without permission or required attribution; cannot sell unmodified images or compile them into a competing image service. Attribution appreciated.",
+  "assets": [
+    {
+      "file": "bbq-grill.jpg",
+      "photographer": "Evan Wise",
+      "source": "https://unsplash.com/photos/grilled-barbecues-on-black-and-gray-grill-D99y38Na5Xo",
+      "download": "https://images.unsplash.com/photo-1534797258760-1bd2cc95a5bd?w=1600&q=85&fit=max&fm=jpg",
+      "license": "Unsplash License",
+      "license_url": "https://unsplash.com/license",
+      "description": "Outdoor grill with colorful kebabs and sausages. Illustrative demo photograph, not a SHINING product photo."
+    },
+    {
+      "file": "rice-bowl.jpg",
+      "photographer": "David Foodphototasty",
+      "source": "https://unsplash.com/photos/corn-and-sliced-tomato-on-white-ceramic-bowl-zhkhwGrqilw",
+      "download": "https://images.unsplash.com/photo-1602881916963-5daf2d97c06e?w=1400&q=85&fit=max&fm=jpg",
+      "license": "Unsplash License",
+      "license_url": "https://unsplash.com/license",
+      "description": "Colorful chicken and rice bowl with vegetables. Illustrative demo photograph, not a SHINING product photo."
+    },
+    {
+      "file": "intro-nature.jpg",
+      "photographer": "Daniil Silantev",
+      "source": "https://unsplash.com/photos/moss-covered-forest-floor-with-tall-trees-y0VQWlV71os",
+      "license": "Unsplash License",
+      "license_url": "https://unsplash.com/license",
+      "description": "Generic forest imagery, location not verified."
+    },
+    {
+      "file": "catalog/sample-soup.png",
+      "source": "OpenAI image generation, 2026-09-19 JST",
+      "description": "Generic vegetable soup in takeaway cup, illustrative, not actual product."
+    },
+    {
+      "groupId": "SF-001",
+      "file": null,
+      "remote": "https://virtual-restaurant.notion.site/image/attachment%3A4d8643de-0dc8-46a0-8f6d-07ec6c5cf368%3A20260106_WannaEat_0148.jpg?id=2dfa3f9f-ecad-80ae-867d-e9a309281a8c&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+      "source": "https://virtual-restaurant.notion.site/2dfa3f9fecad80ae867de9a309281a8c?pvs=25",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-002",
+      "file": null,
+      "remote": "https://virtual-restaurant.notion.site/image/attachment%3A2e41a8a3-ba32-41fe-9cb3-1527dec7a60f%3ADanish_Cube_HERO_low_%E3%83%AD%E3%82%B4%E5%85%A5%E3%82%8A.jpg?id=2fda3f9f-ecad-803b-957d-d29d2e1919ba&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+      "source": "https://virtual-restaurant.notion.site/Danishi-Cube-2fda3f9fecad803b957dd29d2e1919ba?pvs=25",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-003",
+      "file": "catalog/SF-003.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/25eeb4daffa48286871f01e8c4f1a0f8?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-004",
+      "file": "catalog/SF-004.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/b1feb4daffa4820795b8819ed2470190?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-005",
+      "file": "catalog/SF-005.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/d3feb4daffa482eeba028176bbad40b1?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-006",
+      "file": "catalog/SF-006.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/89eeb4daffa483918ad78192eb50b130?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-007",
+      "file": "catalog/SF-007.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/fc0eb4daffa482939fc8813c9a4f98b5?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-008",
+      "file": "catalog/SF-008.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/d78eb4daffa483d4b61a015e176217f2?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-009",
+      "file": "catalog/SF-009.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/074eb4daffa4827cb39f8146b3445cef?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-010",
+      "file": null,
+      "remote": "https://virtual-restaurant.notion.site/image/attachment%3Aad476595-07c3-4149-a464-f5e6b28e5567%3A%E3%83%81%E3%83%A3%E3%82%A4%E3%83%8A%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%80%8C_%E3%83%86%E3%83%B3%E3%83%86%E3%83%B3%E3%80%8D.png?id=2c0a3f9f-ecad-803a-984d-e6b13cc6c2cd&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+      "source": "https://virtual-restaurant.notion.site/2c0a3f9fecad803a984de6b13cc6c2cd?pvs=25",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-011",
+      "file": "catalog/SF-011.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/099eb4daffa4824f82a481a52b1e7a03?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-012",
+      "file": "catalog/SF-012.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/abaeb4daffa48341805e81510a1f3279?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-013",
+      "file": "catalog/SF-013.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/e1eeb4daffa48294a33181456f886538?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-014",
+      "file": "catalog/SF-014.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/0d5eb4daffa48253836181e2fb159037?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-015",
+      "file": "catalog/SF-015.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/bdceb4daffa482cb82bb01ada0b976e1?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    },
+    {
+      "groupId": "SF-016",
+      "file": "catalog/SF-016.jpg",
+      "remote": null,
+      "source": "https://app.notion.com/p/396eb4daffa48370b85381c8b0320d95?pvs=204",
+      "description": "Supplier product-group reference photo. User requested provisional photo listing; child SKU photos are not individually verified. Public production usage conditions still to be confirmed."
+    }
+  ]
+}

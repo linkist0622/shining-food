@@ -1,0 +1,809 @@
+[
+  {
+    "id": "SF-001",
+    "name": "ふわもちアイスサンド",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 650,
+    "channel": "takeout",
+    "category": "スイーツ",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3A4d8643de-0dc8-46a0-8f6d-07ec6c5cf368%3A20260106_WannaEat_0148.jpg?id=2dfa3f9f-ecad-80ae-867d-e9a309281a8c&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-001",
+    "recordType": "product_group",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2dfa3f9fecad80ae867de9a309281a8c?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-002",
+    "name": "Danish Cube",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 650,
+    "channel": "takeout",
+    "category": "スイーツ",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3A2e41a8a3-ba32-41fe-9cb3-1527dec7a60f%3ADanish_Cube_HERO_low_%E3%83%AD%E3%82%B4%E5%85%A5%E3%82%8A.jpg?id=2fda3f9f-ecad-803b-957d-d29d2e1919ba&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-002",
+    "recordType": "product_group",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/Danishi-Cube-2fda3f9fecad803b957dd29d2e1919ba?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-003",
+    "name": "【美活美腸ヨーグルト】 Ann yong！Greek Garden",
+    "description": "取扱終了の記載あり・再開確認中",
+    "price": 980,
+    "channel": "delivery",
+    "category": "ヨーグルト・アサイー",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-003.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-003",
+    "recordType": "product_group",
+    "available": false,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/25eeb4daffa48286871f01e8c4f1a0f8"
+    ],
+    "status": "discontinued"
+  },
+  {
+    "id": "SF-004",
+    "name": "【アサイーとフルーツ スムージーボウル】 Nutrivive Fruit & Acai",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 980,
+    "channel": "takeout",
+    "category": "ヨーグルト・アサイー",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-004.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-004",
+    "recordType": "product_group",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/b1feb4daffa4820795b8819ed2470190",
+      "https://virtual-restaurant.notion.site/Nutrivive-Fruit-Acai-3d5a3f9fecad80c8a814ec9109b3e1ba?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "SF-005",
+    "name": "FRESH JUICE TOKYO",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 600,
+    "channel": "takeout",
+    "category": "ドリンク",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-005.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-005",
+    "recordType": "product_group",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/d3feb4daffa482eeba028176bbad40b1",
+      "https://virtual-restaurant.notion.site/FRESH-JUICE-TOKYO-225a3f9fecad8046ae52cda5854af8ee?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "SF-006",
+    "name": "飲むスイートポテトIMOIMO",
+    "description": "取扱終了の記載あり・再開確認中",
+    "price": 600,
+    "channel": "delivery",
+    "category": "ドリンク",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-006.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-006",
+    "recordType": "product_group",
+    "available": false,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/89eeb4daffa483918ad78192eb50b130"
+    ],
+    "status": "discontinued"
+  },
+  {
+    "id": "SF-007",
+    "name": "飲むモンブラン NOMUMON",
+    "description": "取扱終了の記載あり・再開確認中",
+    "price": 600,
+    "channel": "delivery",
+    "category": "ドリンク",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-007.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-007",
+    "recordType": "product_group",
+    "available": false,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/fc0eb4daffa482939fc8813c9a4f98b5"
+    ],
+    "status": "discontinued"
+  },
+  {
+    "id": "SF-008",
+    "name": "香麗麻辣湯 （シャンリーマーラータン）",
+    "description": "提供方法・販売条件を確認中",
+    "price": 1200,
+    "channel": "both",
+    "category": "麺類",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-008.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-008",
+    "recordType": "product_group",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2c7a3f9fecad8091b6bfed5a5a03c195",
+      "https://virtual-restaurant.notion.site/225a3f9fecad804789e1fb8fff8ed81a?pvs=25",
+      "https://virtual-restaurant.notion.site/2c7a3f9fecad8091b6bfed5a5a03c195?pvs=25"
+    ],
+    "status": "channel_permission_unconfirmed"
+  },
+  {
+    "id": "SF-009",
+    "name": "とじないカツ丼とカツ茶漬け 勝穂庵(かつほあん)",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 1400,
+    "channel": "takeout",
+    "category": "丼・ごはん",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-009.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-009",
+    "recordType": "product_group",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/074eb4daffa4827cb39f8146b3445cef",
+      "https://virtual-restaurant.notion.site/3d5a3f9fecad80f3a560ea1e8f496ab8?pvs=25"
+    ],
+    "status": "channel_permission_unconfirmed"
+  },
+  {
+    "id": "SF-010",
+    "name": "チャイナストリート「テンテン」",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 700,
+    "channel": "takeout",
+    "category": "中華・軽食",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3Aad476595-07c3-4149-a464-f5e6b28e5567%3A%E3%83%81%E3%83%A3%E3%82%A4%E3%83%8A%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%80%8C_%E3%83%86%E3%83%B3%E3%83%86%E3%83%B3%E3%80%8D.png?id=2c0a3f9f-ecad-803a-984d-e6b13cc6c2cd&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-010",
+    "recordType": "product_group",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2c0a3f9fecad803a984de6b13cc6c2cd?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-011",
+    "name": "お出汁うどんぶっかけとろろ日和",
+    "description": "取扱終了の記載あり・再開確認中",
+    "price": 1200,
+    "channel": "delivery",
+    "category": "麺類",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-011.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-011",
+    "recordType": "product_group",
+    "available": false,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/099eb4daffa4824f82a481a52b1e7a03"
+    ],
+    "status": "discontinued"
+  },
+  {
+    "id": "SF-012",
+    "name": "ひつまぶし うな松",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 1400,
+    "channel": "takeout",
+    "category": "丼・ごはん",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-012.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-012",
+    "recordType": "product_group",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/abaeb4daffa48341805e81510a1f3279",
+      "https://virtual-restaurant.notion.site/225a3f9fecad8051882fdf1d97221d14?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "SF-013",
+    "name": "メルハバ！ケバブ",
+    "description": "取扱終了の記載あり・再開確認中",
+    "price": 1200,
+    "channel": "delivery",
+    "category": "軽食",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-013.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-013",
+    "recordType": "product_group",
+    "available": false,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/e1eeb4daffa48294a33181456f886538"
+    ],
+    "status": "discontinued"
+  },
+  {
+    "id": "SF-014",
+    "name": "【本格四川の味】 飛龍麻婆丼",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 1400,
+    "channel": "takeout",
+    "category": "丼・ごはん",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-014.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-014",
+    "recordType": "product_group",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/0d5eb4daffa48253836181e2fb159037",
+      "https://virtual-restaurant.notion.site/3d5a3f9fecad80218ce0c616baaa05ea?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "SF-015",
+    "name": "おでん割烹 因幡",
+    "description": "取扱終了の記載あり・再開確認中",
+    "price": 1200,
+    "channel": "delivery",
+    "category": "おでん・惣菜",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-015.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-015",
+    "recordType": "product_group",
+    "available": false,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/bdceb4daffa482cb82bb01ada0b976e1"
+    ],
+    "status": "discontinued"
+  },
+  {
+    "id": "SF-016",
+    "name": "牛牛亭 村山",
+    "description": "取扱終了の記載あり・再開確認中",
+    "price": 1400,
+    "channel": "delivery",
+    "category": "丼・ごはん",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-016.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-016",
+    "recordType": "product_group",
+    "available": false,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://app.notion.com/p/396eb4daffa48370b85381c8b0320d95"
+    ],
+    "status": "discontinued"
+  },
+  {
+    "id": "SF-001-01",
+    "name": "ふわもちアイスサンド バニラ",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 650,
+    "channel": "takeout",
+    "category": "スイーツ",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3A4d8643de-0dc8-46a0-8f6d-07ec6c5cf368%3A20260106_WannaEat_0148.jpg?id=2dfa3f9f-ecad-80ae-867d-e9a309281a8c&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-001",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2dfa3f9fecad80ae867de9a309281a8c?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-001-02",
+    "name": "ふわもちアイスサンド 抹茶",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 650,
+    "channel": "takeout",
+    "category": "スイーツ",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3A4d8643de-0dc8-46a0-8f6d-07ec6c5cf368%3A20260106_WannaEat_0148.jpg?id=2dfa3f9f-ecad-80ae-867d-e9a309281a8c&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-001",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2dfa3f9fecad80ae867de9a309281a8c?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-001-03",
+    "name": "ふわもちアイスサンド チョコ",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 650,
+    "channel": "takeout",
+    "category": "スイーツ",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3A4d8643de-0dc8-46a0-8f6d-07ec6c5cf368%3A20260106_WannaEat_0148.jpg?id=2dfa3f9f-ecad-80ae-867d-e9a309281a8c&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-001",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2dfa3f9fecad80ae867de9a309281a8c?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-001-04",
+    "name": "ふわもちアイスサンド ストロベリー",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 650,
+    "channel": "takeout",
+    "category": "スイーツ",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3A4d8643de-0dc8-46a0-8f6d-07ec6c5cf368%3A20260106_WannaEat_0148.jpg?id=2dfa3f9f-ecad-80ae-867d-e9a309281a8c&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-001",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2dfa3f9fecad80ae867de9a309281a8c?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-002-01",
+    "name": "デニッシュキューブ",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 650,
+    "channel": "takeout",
+    "category": "スイーツ",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3A2e41a8a3-ba32-41fe-9cb3-1527dec7a60f%3ADanish_Cube_HERO_low_%E3%83%AD%E3%82%B4%E5%85%A5%E3%82%8A.jpg?id=2fda3f9f-ecad-803b-957d-d29d2e1919ba&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-002",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/Danishi-Cube-2fda3f9fecad803b957dd29d2e1919ba?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-010-01",
+    "name": "湯葉巻き餃子ドッグ",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 1200,
+    "channel": "takeout",
+    "category": "フード・軽食",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3Aad476595-07c3-4149-a464-f5e6b28e5567%3A%E3%83%81%E3%83%A3%E3%82%A4%E3%83%8A%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%80%8C_%E3%83%86%E3%83%B3%E3%83%86%E3%83%B3%E3%80%8D.png?id=2c0a3f9f-ecad-803a-984d-e6b13cc6c2cd&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-010",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2c0a3f9fecad803a984de6b13cc6c2cd?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-010-02",
+    "name": "ごま団子串",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 1200,
+    "channel": "takeout",
+    "category": "フード・軽食",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3Aad476595-07c3-4149-a464-f5e6b28e5567%3A%E3%83%81%E3%83%A3%E3%82%A4%E3%83%8A%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%80%8C_%E3%83%86%E3%83%B3%E3%83%86%E3%83%B3%E3%80%8D.png?id=2c0a3f9f-ecad-803a-984d-e6b13cc6c2cd&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-010",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2c0a3f9fecad803a984de6b13cc6c2cd?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-010-03",
+    "name": "一口さつまいもボール(黄色&紫)",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 1200,
+    "channel": "takeout",
+    "category": "フード・軽食",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3Aad476595-07c3-4149-a464-f5e6b28e5567%3A%E3%83%81%E3%83%A3%E3%82%A4%E3%83%8A%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%80%8C_%E3%83%86%E3%83%B3%E3%83%86%E3%83%B3%E3%80%8D.png?id=2c0a3f9f-ecad-803a-984d-e6b13cc6c2cd&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-010",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2c0a3f9fecad803a984de6b13cc6c2cd?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-010-04",
+    "name": "ハリネズミ包",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 1200,
+    "channel": "takeout",
+    "category": "フード・軽食",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3Aad476595-07c3-4149-a464-f5e6b28e5567%3A%E3%83%81%E3%83%A3%E3%82%A4%E3%83%8A%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%80%8C_%E3%83%86%E3%83%B3%E3%83%86%E3%83%B3%E3%80%8D.png?id=2c0a3f9f-ecad-803a-984d-e6b13cc6c2cd&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-010",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2c0a3f9fecad803a984de6b13cc6c2cd?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-010-05",
+    "name": "ハリネズミ包&ごま団子串",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 1200,
+    "channel": "takeout",
+    "category": "フード・軽食",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3Aad476595-07c3-4149-a464-f5e6b28e5567%3A%E3%83%81%E3%83%A3%E3%82%A4%E3%83%8A%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%80%8C_%E3%83%86%E3%83%B3%E3%83%86%E3%83%B3%E3%80%8D.png?id=2c0a3f9f-ecad-803a-984d-e6b13cc6c2cd&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-010",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2c0a3f9fecad803a984de6b13cc6c2cd?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "SF-010-06",
+    "name": "ごま団子3個",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 1200,
+    "channel": "takeout",
+    "category": "フード・軽食",
+    "icon": "candidate",
+    "image": "https://virtual-restaurant.notion.site/image/attachment%3Aad476595-07c3-4149-a464-f5e6b28e5567%3A%E3%83%81%E3%83%A3%E3%82%A4%E3%83%8A%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%80%8C_%E3%83%86%E3%83%B3%E3%83%86%E3%83%B3%E3%80%8D.png?id=2c0a3f9f-ecad-803a-984d-e6b13cc6c2cd&table=block&spaceId=3b998286-8102-486c-9ea7-e84578fd1f4f&width=640&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-010",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/2c0a3f9fecad803a984de6b13cc6c2cd?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "research-sf-005-01",
+    "name": "レモンソーダ",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 600,
+    "channel": "takeout",
+    "category": "ドリンク",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-005.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-005",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/FRESH-JUICE-TOKYO-225a3f9fecad8046ae52cda5854af8ee?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "research-sf-005-02",
+    "name": "グレープフルーツソーダ",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 600,
+    "channel": "takeout",
+    "category": "ドリンク",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-005.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-005",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/FRESH-JUICE-TOKYO-225a3f9fecad8046ae52cda5854af8ee?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "research-sf-005-03",
+    "name": "パイナップル＆パッションソーダ",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 600,
+    "channel": "takeout",
+    "category": "ドリンク",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-005.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-005",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/FRESH-JUICE-TOKYO-225a3f9fecad8046ae52cda5854af8ee?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "research-sf-005-04",
+    "name": "キウイフルーツソーダ",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 600,
+    "channel": "takeout",
+    "category": "ドリンク",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-005.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-005",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/FRESH-JUICE-TOKYO-225a3f9fecad8046ae52cda5854af8ee?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "research-sf-005-05",
+    "name": "パイン＆パッション＆マンゴーソーダ",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 600,
+    "channel": "takeout",
+    "category": "ドリンク",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-005.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-005",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/FRESH-JUICE-TOKYO-225a3f9fecad8046ae52cda5854af8ee?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "research-sf-005-06",
+    "name": "パイナップルソーダ",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 600,
+    "channel": "takeout",
+    "category": "ドリンク",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-005.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-005",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/FRESH-JUICE-TOKYO-225a3f9fecad8046ae52cda5854af8ee?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "research-sf-005-07",
+    "name": "パッションフルーツソーダ",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 600,
+    "channel": "takeout",
+    "category": "ドリンク",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-005.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-005",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/FRESH-JUICE-TOKYO-225a3f9fecad8046ae52cda5854af8ee?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "research-sf-005-08",
+    "name": "ストロベリーソーダ",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 600,
+    "channel": "takeout",
+    "category": "ドリンク",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-005.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-005",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/FRESH-JUICE-TOKYO-225a3f9fecad8046ae52cda5854af8ee?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "research-sf-008-01",
+    "name": "香麗オリジナル麻辣湯",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 1200,
+    "channel": "takeout",
+    "category": "麺類",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-008.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-008",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/225a3f9fecad804789e1fb8fff8ed81a?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "research-sf-008-02",
+    "name": "香麗野菜麻辣湯",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 1200,
+    "channel": "takeout",
+    "category": "麺類",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-008.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-008",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/225a3f9fecad804789e1fb8fff8ed81a?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "research-sf-008-03",
+    "name": "香麗海鮮麻辣湯",
+    "description": "持帰り可否確認中・配達対象外",
+    "price": 1200,
+    "channel": "takeout",
+    "category": "麺類",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-008.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-008",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/225a3f9fecad804789e1fb8fff8ed81a?pvs=25"
+    ],
+    "status": "retail_source_only"
+  },
+  {
+    "id": "research-sf-012-01",
+    "name": "鰻のひつまぶし",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 1400,
+    "channel": "takeout",
+    "category": "丼・ごはん",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-012.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-012",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/225a3f9fecad8051882fdf1d97221d14?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  },
+  {
+    "id": "research-sf-012-02",
+    "name": "うな丼",
+    "description": "デリバリー取扱終了・持帰り可否確認中",
+    "price": 1400,
+    "channel": "takeout",
+    "category": "丼・ごはん",
+    "icon": "candidate",
+    "image": "/images/catalog/SF-012.jpg",
+    "imageLabel": "商品群の参考写真",
+    "groupId": "SF-012",
+    "recordType": "product_heading",
+    "available": true,
+    "consultationRequired": true,
+    "officialPrice": null,
+    "sourceUrls": [
+      "https://virtual-restaurant.notion.site/225a3f9fecad8051882fdf1d97221d14?pvs=25"
+    ],
+    "status": "delivery_ended_retail_continues"
+  }
+]

@@ -1,0 +1,2 @@
+import {notFound} from 'next/navigation';
+export default function QA(){if(process.env.NODE_ENV==='production')notFound();return <main style={{padding:20,display:'flex',gap:20,alignItems:'start'}}><iframe title="スマートフォン 390px" src="/" style={{width:390,height:844,border:'1px solid #ccc',flexShrink:0}}/><iframe title="狭幅 320px" src="/" style={{width:320,height:740,border:'1px solid #ccc',flexShrink:0}}/></main>;}
