@@ -1,4 +1,5 @@
 import catalog from './catalog.json' with {type:'json'};
+import {freshDeliveryCheck,type DeliveryCheck} from './delivery.ts';
 /** Illustrative DEMO data only. No supplier recipes, prices or approved destinations. */
 export type Product = {id:string; name:string; description:string; price:number; channel:'both'|'delivery'|'takeout'; icon:string; image?:string;imageLabel?:string;category?:string;groupId?:string;recordType?:string;available?:boolean;consultationRequired?:boolean};
 const illustrativeProducts:Product[] = [
@@ -28,16 +29,16 @@ export const destinations = [
  ...pilotDestinations,
  {id:'center-pending',name:'その他の管理センター（正式名称・所在地確認中）',type:'villa',meeting:'待ち合わせ場所を店舗確認後に調整します',verified:false}
 ];
-export type Draft={kind:'meal'|'bbq';fulfillment:'delivery'|'takeout';cart:Record<string,number>;people:number;setId:string;deliveryTiming:'asap'|'scheduled';date:string;time:string;destType:'facility'|'villa'|'address';destId:string;address:string;meeting:string;range:'unverified'|'outside'|'verified';kitchen:boolean;driver:boolean;productReady:boolean;special:boolean;handoff:boolean;note:string;contactName:string;contactPhone:string};
+export type Draft={kind:'meal'|'bbq';fulfillment:'delivery'|'takeout';cart:Record<string,number>;people:number;setId:string;deliveryTiming:'asap'|'scheduled';date:string;time:string;destType:'facility'|'villa'|'address';destId:string;address:string;meeting:string;range:'unverified'|'outside'|'verified';deliveryCheck:DeliveryCheck|null;kitchen:boolean;driver:boolean;productReady:boolean;special:boolean;handoff:boolean;note:string;contactName:string;contactPhone:string};
 export type Quote={subtotal:number;fee:number;total:number;note:string;revision:number};
 export type Status='draft'|'review'|'awaiting_answer'|'quoted'|'accepted'|'payment'|'confirmed'|'declined';
 export type PaymentMethod='card'|'apple_pay'|'google_pay'|'paypay';
 export type Payment={method:PaymentMethod|'';phase:'idle'|'processing'|'failed'|'succeeded';attemptId:string;revision:number};
 export const blankPayment=():Payment=>({method:'',phase:'idle',attemptId:'',revision:0});
-export type DemoState={draft:Draft;status:Status;revision:number;quote:Quote|null;reason:string;notice:string;scenario:number;history:string[];question:string;payment:Payment};
+export type DemoState={draft:Draft;orderedAt:number|null;status:Status;revision:number;quote:Quote|null;reason:string;notice:string;scenario:number;history:string[];question:string;payment:Payment};
 export function tomorrow(){const d=new Date();d.setDate(d.getDate()+1);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
-export function blankDraft():Draft{return {kind:'meal',fulfillment:'delivery',cart:{},people:6,setId:'standard',deliveryTiming:'asap',date:'',time:'',destType:'facility',destId:'',address:'',meeting:'',range:'unverified',kitchen:true,driver:true,productReady:true,special:false,handoff:false,note:'',contactName:'',contactPhone:''};}
-export function initialState():DemoState{return {draft:blankDraft(),status:'draft',revision:1,quote:null,reason:'',notice:'',scenario:0,history:[],question:'',payment:blankPayment()};}
+export function blankDraft():Draft{return {kind:'meal',fulfillment:'delivery',cart:{},people:6,setId:'standard',deliveryTiming:'asap',date:'',time:'',destType:'address',destId:'',address:'',meeting:'',range:'unverified',deliveryCheck:null,kitchen:true,driver:true,productReady:true,special:false,handoff:false,note:'',contactName:'',contactPhone:''};}
+export function initialState():DemoState{return {draft:blankDraft(),orderedAt:null,status:'draft',revision:1,quote:null,reason:'',notice:'',scenario:0,history:[],question:'',payment:blankPayment()};}
 export function subtotal(d:Draft){return d.kind==='bbq'?(bbqSets.find(s=>s.id===d.setId)?.price??0)*d.people:products.reduce((s,p)=>s+p.price*(d.cart[p.id]??0),0);}
 // User clarification, 2026-09-19: delivery only; merchandise subtotal excludes delivery fees.
 export const MINIMUM_ORDER_AMOUNT=3980;
@@ -76,7 +77,7 @@ export function consultationReasons(d:Draft):string[]{const r:string[]=[];
  if(d.kind==='bbq')r.push('BBQはすべて事前相談');
  if(d.kind==='meal'&&products.some(p=>(d.cart[p.id]??0)>0&&p.consultationRequired))r.push('候補商品の提供・販売条件の確認');
  if(d.fulfillment==='delivery'){
-  if(d.destType==='address'){if(d.range==='outside')r.push('直線10kmを超える想定');else if(d.range!=='verified')r.push('住所・道路条件が未検証');}
+  if(d.destType==='address'){const check=freshDeliveryCheck(d.deliveryCheck,d.address);if(check?.status==='inside')r.push('道路状況・受付枠の最終確認');else if(check?.status==='outside')r.push('通常の配達エリア外・個別相談');else if(d.range==='outside')r.push('直線10kmを超える想定');else if(d.range!=='verified')r.push('住所・道路条件が未検証');}
   else if(!destination(d)?.verified)r.push('施設・待ち合わせ条件が未検証');
   if(!d.driver)r.push('配送枠の調整が必要');
  }
@@ -86,15 +87,15 @@ export function consultationReasons(d:Draft):string[]{const r:string[]=[];
  if(d.special)r.push('特別なご希望の確認が必要');
  return r;
 }
-export function referenceFee(d:Draft){return d.fulfillment==='takeout'||subtotal(d)>=10000?0:d.range==='outside'&&d.destType==='address'?2000:1000;}
-export function demoScenario(id:number):DemoState{const s=initialState();s.scenario=id;s.draft={...s.draft,cart:{bowl:4},deliveryTiming:'scheduled',date:tomorrow(),time:'17:30–18:00',handoff:false,destId:'F-001',contactName:'確認用のお客様',contactPhone:'00000000000'};
+export function referenceFee(d:Draft,at=Date.now()){if(d.fulfillment==='takeout'||subtotal(d)>=10000)return 0;const check=d.destType==='address'?freshDeliveryCheck(d.deliveryCheck,d.address,at):null;if(check&&(check.status==='inside'||check.status==='outside')&&Number.isFinite(check.straightKm))return check.straightKm!>5?2000:1000;return d.range==='outside'&&d.destType==='address'?2000:1000;}
+export function demoScenario(id:number):DemoState{const s=initialState();s.scenario=id;s.draft={...s.draft,cart:{bowl:4},deliveryTiming:'scheduled',destType:'facility',date:tomorrow(),time:'17:30–18:00',handoff:false,destId:'F-001',contactName:'確認用のお客様',contactPhone:'00000000000'};
  if(id===2)s.draft.destId='F-002';
  if(id===3){s.draft.destType='villa';s.draft.destId='F-012';}
  if(id===4||id===5){s.draft.destType='address';s.draft.destId='';s.draft.address='デモ用：範囲外エリアの住所（実在住所の入力不要）';s.draft.meeting='入口で注文者ご本人と待ち合わせ（DEMO）';s.draft.range='outside';}
  if(id===6){s.draft.kind='bbq';s.draft.cart={};s.draft.people=6;s.draft.destId='F-002';}
  s.notice='ケースを読み込みました。入力内容は操作用の仮データです。';return s;}
 export type Action=
- |{type:'edit';patch:Partial<Draft>}|{type:'scenario';id:number}|{type:'reset'}|{type:'submit'}
+ |{type:'edit';patch:Partial<Draft>}|{type:'scenario';id:number}|{type:'reset'}|{type:'submit';at?:number}
  |{type:'approve'}|{type:'quote';fee:number;note:string}|{type:'decline';reason:string}
  |{type:'ask';question:string}|{type:'answer';answer:string}|{type:'accept'}
  |{type:'select_payment';method:PaymentMethod}|{type:'start_payment';attemptId:string}
@@ -106,8 +107,10 @@ export function reduceDemo(s:DemoState,a:Action):DemoState{
  if(a.type==='scenario')return a.id>=1&&a.id<=6?demoScenario(a.id):s;
  if(a.type==='edit'){
   const draft={...s.draft,...a.patch};
+  if(a.patch.deliveryCheck&&(s.status!=='draft'||draft.destType!=='address'||draft.fulfillment!=='delivery'||a.patch.deliveryCheck.address!==draft.address))return s;
+  if(draft.address!==s.draft.address||draft.destType!==s.draft.destType||draft.destId!==s.draft.destId||draft.fulfillment!==s.draft.fulfillment||draft.kind!==s.draft.kind){draft.deliveryCheck=null;if(a.patch.range===undefined)draft.range='unverified';}
   if(isImmediateDelivery(draft)){draft.date='';draft.time='';}
-  return {...s,draft,status:'draft',quote:null,payment:blankPayment(),question:'',revision:s.revision+1,reason:'',notice:s.status==='draft'?'':'条件を変更しました。見積と了承を取り消し、店舗で再確認します。'};
+  return {...s,draft,orderedAt:null,status:'draft',quote:null,payment:blankPayment(),question:'',revision:s.revision+1,reason:'',notice:s.status==='draft'?'':'条件を変更しました。見積と了承を取り消し、店舗で再確認します。'};
  }
  if(a.type==='alternative'){
   let patch:Partial<Draft>={handoff:false};
@@ -118,10 +121,10 @@ export function reduceDemo(s:DemoState,a:Action):DemoState{
  }
  if(a.type==='submit'&&s.status==='draft'){
   const errors=validation(s.draft);if(errors.length)return {...s,notice:errors.join(' ')};
-  return {...s,status:'review',quote:null,payment:blankPayment(),notice:'お申込みを受け付けました。店舗で確認しています。',history:[...s.history,'お申込み受付・店舗確認待ち']};
+  return {...s,orderedAt:a.at??Date.now(),status:'review',quote:null,payment:blankPayment(),notice:'お申込みを受け付けました。店舗で確認しています。',history:[...s.history,'お申込み受付・店舗確認待ち']};
  }
  if(a.type==='approve'&&s.status==='review'&&!consultationReasons(s.draft).length){
-  const sub=subtotal(s.draft),fee=referenceFee(s.draft);
+  const sub=subtotal(s.draft),fee=referenceFee(s.draft,s.orderedAt??Date.now());
   return {...s,status:'payment',question:'',quote:{subtotal:sub,fee,total:sub+fee,note:'ご希望の内容で受付可能です。受取条件をご確認のうえ、お支払いへお進みください。',revision:s.revision},notice:'店舗が受付内容を確認しました。お支払いへお進みください。',history:[...s.history,'店舗：受付可能']};
  }
  if(a.type==='quote'&&s.status==='review'){

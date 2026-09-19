@@ -1,7 +1,9 @@
-# SHINING food — PWA preview v2.3
+# SHINING food — PWA preview v2.4
 
 公開先: https://shining-food-owner-demo.linkist39.chatgpt.site/
 GitHub: https://github.com/linkist0622/shining-food （preview/pwa-v2ブランチ）
+
+住所入力・経路と調理20分によるお届け目安の実装と接続残件は [docs/DELIVERY_CHECK.md](docs/DELIVERY_CHECK.md)。地図APIは未接続のため、現在の公開版では実距離・到着時刻を自動表示せず、店舗確認へ案内します。
 
 ユーザーの承認（2026-09-18）に基づき、コード・候補商品データ・写真・実装資料を公開リポジトリのpreview/pwa-v2ブランチで管理します。Sites側の作業原本と公開版にもコード・画像を保持しています。
 
