@@ -28,7 +28,7 @@ export const destinations = [
  ...pilotDestinations,
  {id:'center-pending',name:'その他の管理センター（正式名称・所在地確認中）',type:'villa',meeting:'待ち合わせ場所を店舗確認後に調整します',verified:false}
 ];
-export type Draft={kind:'meal'|'bbq';fulfillment:'delivery'|'takeout';cart:Record<string,number>;people:number;setId:string;date:string;time:string;destType:'facility'|'villa'|'address';destId:string;address:string;meeting:string;range:'unverified'|'outside'|'verified';kitchen:boolean;driver:boolean;productReady:boolean;special:boolean;handoff:boolean;note:string;contactName:string;contactPhone:string};
+export type Draft={kind:'meal'|'bbq';fulfillment:'delivery'|'takeout';cart:Record<string,number>;people:number;setId:string;deliveryTiming:'asap'|'scheduled';date:string;time:string;destType:'facility'|'villa'|'address';destId:string;address:string;meeting:string;range:'unverified'|'outside'|'verified';kitchen:boolean;driver:boolean;productReady:boolean;special:boolean;handoff:boolean;note:string;contactName:string;contactPhone:string};
 export type Quote={subtotal:number;fee:number;total:number;note:string;revision:number};
 export type Status='draft'|'review'|'awaiting_answer'|'quoted'|'accepted'|'payment'|'confirmed'|'declined';
 export type PaymentMethod='card'|'apple_pay'|'google_pay'|'paypay';
@@ -36,7 +36,7 @@ export type Payment={method:PaymentMethod|'';phase:'idle'|'processing'|'failed'|
 export const blankPayment=():Payment=>({method:'',phase:'idle',attemptId:'',revision:0});
 export type DemoState={draft:Draft;status:Status;revision:number;quote:Quote|null;reason:string;notice:string;scenario:number;history:string[];question:string;payment:Payment};
 export function tomorrow(){const d=new Date();d.setDate(d.getDate()+1);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
-export function blankDraft():Draft{return {kind:'meal',fulfillment:'delivery',cart:{},people:6,setId:'standard',date:'',time:'',destType:'facility',destId:'',address:'',meeting:'',range:'unverified',kitchen:true,driver:true,productReady:true,special:false,handoff:false,note:'',contactName:'',contactPhone:''};}
+export function blankDraft():Draft{return {kind:'meal',fulfillment:'delivery',cart:{},people:6,setId:'standard',deliveryTiming:'asap',date:'',time:'',destType:'facility',destId:'',address:'',meeting:'',range:'unverified',kitchen:true,driver:true,productReady:true,special:false,handoff:false,note:'',contactName:'',contactPhone:''};}
 export function initialState():DemoState{return {draft:blankDraft(),status:'draft',revision:1,quote:null,reason:'',notice:'',scenario:0,history:[],question:'',payment:blankPayment()};}
 export function subtotal(d:Draft){return d.kind==='bbq'?(bbqSets.find(s=>s.id===d.setId)?.price??0)*d.people:products.reduce((s,p)=>s+p.price*(d.cart[p.id]??0),0);}
 // User clarification, 2026-09-19: delivery only; merchandise subtotal excludes delivery fees.
@@ -45,16 +45,22 @@ export function minimumOrderShortfall(d:Draft){return d.fulfillment==='takeout'?
 export function destination(d:Draft){return destinations.find(x=>x.id===d.destId);}
 export function destinationLabel(d:Draft){return d.fulfillment==='takeout'?'Cafe&Bar あさま 共通受取場所（詳細確認中）':d.destType==='address'?d.address:destination(d)?.name??'未選択';}
 export function meetingLabel(d:Draft){return d.fulfillment==='takeout'?'Cafe&Bar あさまと共通の受取カウンター（位置・住所確認中）':d.destType==='address'?d.meeting:destination(d)?.meeting??'台帳の待ち合わせ場所は未読・確認中';}
+export function isImmediateDelivery(d:Draft){return d.kind==='meal'&&d.fulfillment==='delivery'&&d.deliveryTiming==='asap';}
+export function requiresSchedule(d:Draft){return !isImmediateDelivery(d);}
+export function scheduleLabel(d:Draft){return isImmediateDelivery(d)?'できるだけ早く（お届け目安は店舗確認後にご案内）':`${d.date||'希望日未選択'} / ${d.time||'希望時間未選択'}`;}
 export function validation(d:Draft):string[]{const e:string[]=[];
  if(minimumOrderShortfall(d)>0)e.push(`デリバリーの最低注文金額は商品代金${MINIMUM_ORDER_AMOUNT.toLocaleString('ja-JP')}円です（配達料を除く）。あと${minimumOrderShortfall(d).toLocaleString('ja-JP')}円分の商品を追加してください。`);
  if(d.kind==='meal'&&!products.some(p=>(d.cart[p.id]??0)>0))e.push('商品を1点以上選んでください。');
  if(d.kind==='meal'&&products.some(p=>!Number.isInteger(d.cart[p.id]??0)||(d.cart[p.id]??0)<0||(d.cart[p.id]??0)>30))e.push('商品数量は0〜30点で指定してください。');
  if(d.kind==='bbq'&&(!Number.isInteger(d.people)||d.people<1||d.people>30))e.push('BBQの人数は1〜30名で入力してください。');
  if(d.kind==='bbq'&&!bbqSets.some(s=>s.id===d.setId))e.push('BBQセットを選んでください。');
- const date=new Date(`${d.date}T12:00:00`);
- const now=new Date();now.setHours(0,0,0,0);
- if(!/^\d{4}-\d{2}-\d{2}$/.test(d.date)||Number.isNaN(date.getTime())||date.getDate()!==Number(d.date.slice(8))||date<now)e.push('今日以降の有効な希望日を選んでください。');
- if(!['17:00–17:30','17:30–18:00','18:00–18:30'].includes(d.time))e.push('希望時間を選んでください。');
+ if(d.kind==='meal'&&d.fulfillment==='delivery'&&!['asap','scheduled'].includes(d.deliveryTiming))e.push('お届けのタイミングを選んでください。');
+ if(requiresSchedule(d)){
+  const date=new Date(`${d.date}T12:00:00`);
+  const now=new Date();now.setHours(0,0,0,0);
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(d.date)||Number.isNaN(date.getTime())||date.getDate()!==Number(d.date.slice(8))||date<now)e.push('今日以降の有効な希望日を選んでください。');
+  if(!['17:00–17:30','17:30–18:00','18:00–18:30'].includes(d.time))e.push('希望時間を選んでください。');
+ }
  if(d.fulfillment==='delivery'){
   if(d.destType==='address'&&(!d.address.trim()||!d.meeting.trim()))e.push('住所とご本人の待ち合わせ場所を入力してください。');
   if(d.destType!=='address'&&(!destination(d)||destination(d)?.type!==d.destType))e.push('施設または管理センターを選んでください。');
@@ -81,7 +87,7 @@ export function consultationReasons(d:Draft):string[]{const r:string[]=[];
  return r;
 }
 export function referenceFee(d:Draft){return d.fulfillment==='takeout'||subtotal(d)>=10000?0:d.range==='outside'&&d.destType==='address'?2000:1000;}
-export function demoScenario(id:number):DemoState{const s=initialState();s.scenario=id;s.draft={...s.draft,cart:{bowl:4},date:tomorrow(),time:'17:30–18:00',handoff:false,destId:'F-001',contactName:'確認用のお客様',contactPhone:'00000000000'};
+export function demoScenario(id:number):DemoState{const s=initialState();s.scenario=id;s.draft={...s.draft,cart:{bowl:4},deliveryTiming:'scheduled',date:tomorrow(),time:'17:30–18:00',handoff:false,destId:'F-001',contactName:'確認用のお客様',contactPhone:'00000000000'};
  if(id===2)s.draft.destId='F-002';
  if(id===3){s.draft.destType='villa';s.draft.destId='F-012';}
  if(id===4||id===5){s.draft.destType='address';s.draft.destId='';s.draft.address='デモ用：範囲外エリアの住所（実在住所の入力不要）';s.draft.meeting='入口で注文者ご本人と待ち合わせ（DEMO）';s.draft.range='outside';}
@@ -98,11 +104,15 @@ export function canPay(s:DemoState){return ['payment','accepted'].includes(s.sta
 export function reduceDemo(s:DemoState,a:Action):DemoState{
  if(a.type==='reset')return initialState();
  if(a.type==='scenario')return a.id>=1&&a.id<=6?demoScenario(a.id):s;
- if(a.type==='edit')return {...s,draft:{...s.draft,...a.patch},status:'draft',quote:null,payment:blankPayment(),question:'',revision:s.revision+1,reason:'',notice:s.status==='draft'?'':'条件を変更しました。見積と了承を取り消し、店舗で再確認します。'};
+ if(a.type==='edit'){
+  const draft={...s.draft,...a.patch};
+  if(isImmediateDelivery(draft)){draft.date='';draft.time='';}
+  return {...s,draft,status:'draft',quote:null,payment:blankPayment(),question:'',revision:s.revision+1,reason:'',notice:s.status==='draft'?'':'条件を変更しました。見積と了承を取り消し、店舗で再確認します。'};
+ }
  if(a.type==='alternative'){
   let patch:Partial<Draft>={handoff:false};
   if(a.mode==='takeout')patch={...patch,fulfillment:'takeout',kind:'meal',cart:s.draft.kind==='bbq'?{}:Object.fromEntries(products.filter(p=>p.channel!=='delivery').map(p=>[p.id,s.draft.cart[p.id]??0])),kitchen:true,productReady:true,special:false};
-  if(a.mode==='date')patch={...patch,date:'',time:'',kitchen:true,driver:true};
+  if(a.mode==='date')patch={...patch,deliveryTiming:'scheduled',date:'',time:'',kitchen:true,driver:true};
   if(a.mode==='place')patch={...patch,fulfillment:'delivery',destType:'facility',destId:'',address:'',meeting:'',range:'unverified'};
   return {...reduceDemo(s,{type:'edit',patch}),notice:'新しい条件でご相談いただけます。商品・日時・受取場所をご確認ください。'};
  }

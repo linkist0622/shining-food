@@ -1,5 +1,5 @@
 import {strict as assert} from 'node:assert';
-import {initialState,demoScenario,reduceDemo,validation,consultationReasons,subtotal,pilotSlots,canPay,products,referenceFee,MINIMUM_ORDER_AMOUNT,minimumOrderShortfall,destination,destinationLabel,pilotDestinations} from '../lib/demo.ts';
+import {initialState,demoScenario,reduceDemo,validation,consultationReasons,subtotal,pilotSlots,canPay,products,referenceFee,MINIMUM_ORDER_AMOUNT,minimumOrderShortfall,destination,destinationLabel,pilotDestinations,isImmediateDelivery,requiresSchedule,scheduleLabel,tomorrow} from '../lib/demo.ts';
 const act=reduceDemo;
 const ready=id=>act(demoScenario(id),{type:'edit',patch:{handoff:true}});
 const normalReady=()=>act(ready(1),{type:'edit',patch:{destType:'address',destId:'',address:'検証用住所',meeting:'玄関前',range:'verified'}});
@@ -71,3 +71,44 @@ for(const f of pilotDestinations){
 }
 assert.equal(pilotDestinations.find(f=>f.id==='F-012').type,'villa');
 console.log('PASS: All 12 named facilities; names carried to order details; unverified delivery permissions retained.');
+
+
+// ASAP is the initial choice for meal delivery only; scheduled orders still need a date/time.
+assert.equal(initialState().draft.deliveryTiming,'asap');
+assert.equal(isImmediateDelivery(initialState().draft),true);
+const asap=act(ready(1),{type:'edit',patch:{deliveryTiming:'asap'}});
+assert.equal(asap.draft.date,'');assert.equal(asap.draft.time,'');
+assert.deepEqual(validation(asap.draft),[]);
+assert.equal(act(asap,{type:'submit'}).status,'review');
+assert.ok(scheduleLabel(asap.draft).includes('できるだけ早く'));
+let scheduled=act(asap,{type:'edit',patch:{deliveryTiming:'scheduled'}});
+assert.equal(requiresSchedule(scheduled.draft),true);
+assert.ok(validation(scheduled.draft).some(e=>e.includes('希望日')));
+assert.ok(validation(scheduled.draft).some(e=>e.includes('希望時間')));
+assert.equal(act(scheduled,{type:'submit'}).status,'draft');
+scheduled=act(scheduled,{type:'edit',patch:{date:tomorrow(),time:'17:30–18:00'}});
+assert.deepEqual(validation(scheduled.draft),[]);
+assert.equal(act(scheduled,{type:'submit'}).status,'review');
+assert.equal(scheduleLabel(scheduled.draft),`${tomorrow()} / 17:30–18:00`);
+assert.ok(validation({...scheduled.draft,date:'2026-02-30'}).some(e=>e.includes('希望日')));
+assert.ok(validation({...scheduled.draft,deliveryTiming:'invalid'}).some(e=>e.includes('タイミング')));
+for(const patch of [{fulfillment:'takeout'},{kind:'bbq'}]){
+ const s=act(asap,{type:'edit',patch});
+ assert.equal(requiresSchedule(s.draft),true);
+ assert.ok(validation(s.draft).some(e=>e.includes('希望日')));
+ assert.equal(act(s,{type:'submit'}).status,'draft');
+}
+const dateAlternative=act(asap,{type:'alternative',mode:'date'});
+assert.equal(dateAlternative.draft.deliveryTiming,'scheduled');
+assert.equal(requiresSchedule(dateAlternative.draft),true);
+let asapQuoted=act(act(asap,{type:'submit'}),{type:'quote',fee:1000,note:'お届け目安を確認'});
+asapQuoted=act(asapQuoted,{type:'accept'});
+asapQuoted=act(asapQuoted,{type:'select_payment',method:'card'});
+asapQuoted=act(asapQuoted,{type:'start_payment',attemptId:'timing-change'});
+const changedTiming=act(asapQuoted,{type:'edit',patch:{deliveryTiming:'scheduled'}});
+assert.equal(changedTiming.quote,null);assert.equal(canPay(changedTiming),false);
+assert.equal(act(changedTiming,{type:'finish_payment',attemptId:'timing-change',revision:asapQuoted.revision,success:true}),changedTiming);
+const immediateAgain=act(scheduled,{type:'edit',patch:{deliveryTiming:'asap'}});
+assert.equal(immediateAgain.draft.date,'');assert.equal(immediateAgain.draft.time,'');
+assert.deepEqual(validation(immediateAgain.draft),[]);
+console.log('PASS: ASAP delivery defaults and summaries; scheduled-only date gates; takeout/BBQ scheduling; alternate date path; stale quote/payment invalidation.');
