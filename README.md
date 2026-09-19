@@ -2,7 +2,7 @@
 
 既存デモ公開先: https://shining-food-owner-demo.linkist39.chatgpt.site/
 Vercel公開予定ドメイン: https://shining-food.com/ （公開・DNS設定は未完了）
-GitHub: https://github.com/linkist0622/shining-food （preview/pwa-v2ブランチ）
+GitHub: https://github.com/linkist0622/shining-food （本番用mainブランチ。preview/pwa-v2にも同内容を保存）
 
 2026-09-19のユーザー指示により、Vercel / shining-food.comへの公開を準備。Next.jsの本番ビルド設定は `vercel.json` に追加済み。手順と接続残件は [docs/VERCEL_DEPLOYMENT.md](docs/VERCEL_DEPLOYMENT.md)。VercelのProduction環境への公開は、実注文・決済の開始を意味しません。
 

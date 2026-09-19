@@ -4,7 +4,7 @@
 
 ## コード側の準備
 
-- GitHub：`linkist0622/shining-food`、対象ブランチ：`preview/pwa-v2`。
+- GitHub：`linkist0622/shining-food`、本番用ブランチ：`main`。確認済みの `preview/pwa-v2` をmainへ昇格し、両方に同内容を保存。
 - Framework Preset：Next.js。Root Directory：リポジトリ直下。
 - `vercel.json` が Install Command=`pnpm install --frozen-lockfile`、Build Command=`pnpm run build:vercel` を指定。Output DirectoryはNext.js既定のまま。
 - `build:vercel` は `next build`。APIはNode.jsの `process.env` から秘密値を読み取る。旧Cloudflare専用importを配達APIから除去。
@@ -14,7 +14,7 @@
 ## 接続後に行うこと
 
 1. ユーザーの正しいVercelチームで、このGitHubリポジトリをImportする。既存の同用途プロジェクトがあれば再利用する。
-2. Production Branchが `preview/pwa-v2` になっていることを確認する。別ブランチの旧コードを公開しない。
+2. Production Branchが `main` になっていることを確認する。
 3. Productionへデプロイし、READYを確認する。
 4. Settings → Domainsで `shining-food.com` を追加。Vercelが実際に指定したDNSレコードをドメイン管理会社側へ設定する。値を推測しない。既存のMX/TXTメール設定は保つ。
 5. ドメイン検証・HTTPS証明書の準備完了後、トップ、画像、OGP、カート、配達APIを確認する。
@@ -28,6 +28,8 @@ VercelのProduction用Environment Variablesへ `GOOGLE_MAPS_ROUTES_API_KEY` を�
 ## 今回の接続状況
 
 Vercelプラグインは有効だが、チーム一覧が0件。公開ツールは `Tool deploy_to_vercel not found` を返した。Vercel上のプロジェクト作成、公開、独自ドメイン設定の完了は確認できていない。接続先チームの再確認またはCLI認証が必要。
+
+ユーザーのCLI認証操作後も、実行環境から `api.vercel.com` への通信がポリシーで遮断された。公開完了とは扱わず、認証の再試行を求めない。GitHubのmainには公開準備済みのコードを保存し、Vercel管理画面からImport可能な状態にする。ドメインのDNS設定値はまだ取得できていない。
 
 ## ローカル検証済み
 
