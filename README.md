@@ -1,4 +1,4 @@
-# SHINING food — PWA preview v2.1
+# SHINING food — PWA preview v2.2
 
 公開先: https://shining-food-owner-demo.linkist39.chatgpt.site/
 GitHub: https://github.com/linkist0622/shining-food （preview/pwa-v2ブランチ）
