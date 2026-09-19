@@ -1,9 +1,35 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const siteUrl = "https://shining-food-owner-demo.linkist39.chatgpt.site";
+const title = "SHINING food｜デモサイト";
+const description = "SHINING foodのデリバリー・テイクアウトを体験できるデモサイトです。実際のご注文・決済は行われません。";
+const socialImage = {
+  url: `${siteUrl}/og.png`,
+  width: 1731,
+  height: 909,
+  alt: "SHINING food｜全国の気になるおいしさを、北軽井沢・嬬恋へ。",
+};
+
 export const metadata: Metadata = {
-  title: "SHINING food｜デリバリー・テイクアウト",
-  description: "全国の気になるおいしさを、北軽井沢・嬬恋へ。",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: siteUrl,
+    siteName: "SHINING food",
+    title,
+    description,
+    images: [socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [socialImage],
+  },
   manifest: "/manifest.webmanifest",
   appleWebApp: {capable:true, statusBarStyle:"default", title:"SHINING food"},
   robots: { index: false, follow: false },
