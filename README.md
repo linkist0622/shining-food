@@ -1,7 +1,10 @@
 # SHINING food — PWA preview v2.4
 
-公開先: https://shining-food-owner-demo.linkist39.chatgpt.site/
+既存デモ公開先: https://shining-food-owner-demo.linkist39.chatgpt.site/
+Vercel公開予定ドメイン: https://shining-food.com/ （公開・DNS設定は未完了）
 GitHub: https://github.com/linkist0622/shining-food （preview/pwa-v2ブランチ）
+
+2026-09-19のユーザー指示により、Vercel / shining-food.comへの公開を準備。Next.jsの本番ビルド設定は `vercel.json` に追加済み。手順と接続残件は [docs/VERCEL_DEPLOYMENT.md](docs/VERCEL_DEPLOYMENT.md)。VercelのProduction環境への公開は、実注文・決済の開始を意味しません。
 
 住所入力・経路と調理20分によるお届け目安の実装と接続残件は [docs/DELIVERY_CHECK.md](docs/DELIVERY_CHECK.md)。地図APIは未接続のため、現在の公開版では実距離・到着時刻を自動表示せず、店舗確認へ案内します。
 
@@ -16,10 +19,10 @@ Node 22.13以上、pnpm（package.jsonのpackageManagerを参照）。
 ```bash
 corepack enable
 pnpm install --frozen-lockfile
-pnpm dev
+pnpm dev:vercel
 ```
 
-元のVinext / Cloudflare Workers構成、依存関係、ロックファイルを維持しています。環境別の詳細は [docs/STARTER.md](docs/STARTER.md)。Sites環境はSitesスキルのconfigure-execution-profileとsites-previewを使用します。
+Vercelでは `pnpm build:vercel` / `pnpm start:vercel` を使用します。元のVinext / Cloudflare Workers用スクリプトと依存関係も残しています。旧環境の詳細は [docs/STARTER.md](docs/STARTER.md)。
 
 ## 画面と操作
 
@@ -98,6 +101,6 @@ pnpm build
 
 ## 公開更新と戻し方
 
-GitHubのソース管理とSitesの公開は別です。編集後に型検査・状態遷移テスト・ビルドを行い、既存Site ID（.openai/hosting.json）を使って同じ公開先へ更新します。公開範囲は既存のpublicを維持。別Siteや別ホスティングを作りません。秘密鍵をリポジトリに保存しないでください。
+GitHubへの保存とVercelへの公開は別です。今後の公開先はユーザー指定のVercel / shining-food.comです。接続完了後、対象ブランチの変更をVercelでビルド・公開します。既存Sitesデモは公開済みの状態を保持します。秘密鍵をリポジトリに保存しないでください。
 
 変更を戻す場合は対象コミットをgit revertし、その状態を再ビルドして既存Siteへ公開します。Sites側で以前保存されたv0.2の版へ戻す場合も、公開履歴の版を確認して同じSiteへ再デプロイします。共有範囲は変更しません。

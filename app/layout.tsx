@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const siteUrl = "https://shining-food-owner-demo.linkist39.chatgpt.site";
+const siteUrl = "https://shining-food.com";
 const title = "SHINING food｜デモサイト";
 const description = "SHINING foodのデリバリー・テイクアウトを体験できるデモサイトです。実際のご注文・決済は行われません。";
 const socialImage = {
