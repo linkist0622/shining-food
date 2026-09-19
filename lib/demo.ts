@@ -8,12 +8,24 @@ const illustrativeProducts:Product[] = [
 ];
 export const products:Product[] = [...illustrativeProducts,...catalog as Product[]];
 export const bbqSets = [{id:'standard',name:'スタンダードセット',price:2800,description:'お肉と野菜を楽しむセット。内容量・調理方法・器材の有無は確認中。'},{id:'gather',name:'みんなで楽しむセット',price:3400,description:'集まる日の食材セットを想定。料理・付帯サービスは未確定。'}];
-export const pilotSlots=Array.from({length:12},(_,i)=>`F-${String(i+1).padStart(3,'0')}`);
+// Names match the pilot register 04_施設実走. Names alone do not confirm delivery permission.
+export const pilotDestinations = [
+ {id:'F-001',name:'軽井沢倶楽部 ホテル軽井沢1130',type:'facility'},
+ {id:'F-002',name:'北軽井沢スウィートグラス',type:'facility'},
+ {id:'F-003',name:'outside BASE',type:'facility'},
+ {id:'F-004',name:'Holiday Villa Hotel & Suites Karuizawa',type:'facility'},
+ {id:'F-005',name:'あさま空山望 KUZANBO',type:'facility'},
+ {id:'F-006',name:'Dot Glamping 北軽井沢 / 浅間山キャンプ場',type:'facility'},
+ {id:'F-007',name:'GLAMPEAK 北軽井沢',type:'facility'},
+ {id:'F-008',name:'TAKIVIVA KITAKARUIZAWA',type:'facility'},
+ {id:'F-009',name:'ゆとりろガーデン北軽井沢 with DOGS',type:'facility'},
+ {id:'F-010',name:'ホテルグリーンプラザ軽井沢',type:'facility'},
+ {id:'F-011',name:'ANA Holiday Inn Resort Karuizawa by IHG',type:'facility'},
+ {id:'F-012',name:'浅間ハイランドパーク',type:'villa'}
+].map(f=>({...f,meeting:f.type==='villa'?'管理センター前（仮）。正式な位置・受渡し場所は店舗確認後に調整します':'施設への確認後に、ご本人との待ち合わせ場所を調整します',verified:false}));
+export const pilotSlots=pilotDestinations.map(f=>f.id);
 export const destinations = [
- ...pilotSlots.map(id=>({id,name:`${id}｜仮の施設候補（名称・所在地確認中）`,type:'facility',meeting:'施設名・所在地を確認したうえで、ご本人との待ち合わせ場所を調整します',verified:false})),
- {id:'demo-hotel1130',name:'ホテル1130',type:'facility',meeting:'エントランス付近で注文者ご本人と待ち合わせ（暫定）',verified:true},
- {id:'demo-sweetgrass',name:'スウィートグラス',type:'facility',meeting:'管理棟付近で注文者ご本人と待ち合わせ（暫定）',verified:true},
- {id:'demo-highland',name:'浅間ハイランドパーク管理センター',type:'villa',meeting:'管理センター付近で注文者ご本人と待ち合わせ（暫定）',verified:true},
+ ...pilotDestinations,
  {id:'center-pending',name:'その他の管理センター（正式名称・所在地確認中）',type:'villa',meeting:'待ち合わせ場所を店舗確認後に調整します',verified:false}
 ];
 export type Draft={kind:'meal'|'bbq';fulfillment:'delivery'|'takeout';cart:Record<string,number>;people:number;setId:string;date:string;time:string;destType:'facility'|'villa'|'address';destId:string;address:string;meeting:string;range:'unverified'|'outside'|'verified';kitchen:boolean;driver:boolean;productReady:boolean;special:boolean;handoff:boolean;note:string;contactName:string;contactPhone:string};
@@ -27,10 +39,14 @@ export function tomorrow(){const d=new Date();d.setDate(d.getDate()+1);return `$
 export function blankDraft():Draft{return {kind:'meal',fulfillment:'delivery',cart:{},people:6,setId:'standard',date:'',time:'',destType:'facility',destId:'',address:'',meeting:'',range:'unverified',kitchen:true,driver:true,productReady:true,special:false,handoff:false,note:'',contactName:'',contactPhone:''};}
 export function initialState():DemoState{return {draft:blankDraft(),status:'draft',revision:1,quote:null,reason:'',notice:'',scenario:0,history:[],question:'',payment:blankPayment()};}
 export function subtotal(d:Draft){return d.kind==='bbq'?(bbqSets.find(s=>s.id===d.setId)?.price??0)*d.people:products.reduce((s,p)=>s+p.price*(d.cart[p.id]??0),0);}
+// User clarification, 2026-09-19: delivery only; merchandise subtotal excludes delivery fees.
+export const MINIMUM_ORDER_AMOUNT=3980;
+export function minimumOrderShortfall(d:Draft){return d.fulfillment==='takeout'?0:Math.max(0,MINIMUM_ORDER_AMOUNT-subtotal(d));}
 export function destination(d:Draft){return destinations.find(x=>x.id===d.destId);}
-export function destinationLabel(d:Draft){return d.fulfillment==='takeout'?'Cafe&Bar あさま 共通受取場所（詳細確認中）':d.destType==='address'?d.address:destination(d)?.name??(pilotSlots.includes(d.destId)?`${d.destId} 施設名・所在地確認中`:'未選択');}
+export function destinationLabel(d:Draft){return d.fulfillment==='takeout'?'Cafe&Bar あさま 共通受取場所（詳細確認中）':d.destType==='address'?d.address:destination(d)?.name??'未選択';}
 export function meetingLabel(d:Draft){return d.fulfillment==='takeout'?'Cafe&Bar あさまと共通の受取カウンター（位置・住所確認中）':d.destType==='address'?d.meeting:destination(d)?.meeting??'台帳の待ち合わせ場所は未読・確認中';}
 export function validation(d:Draft):string[]{const e:string[]=[];
+ if(minimumOrderShortfall(d)>0)e.push(`デリバリーの最低注文金額は商品代金${MINIMUM_ORDER_AMOUNT.toLocaleString('ja-JP')}円です（配達料を除く）。あと${minimumOrderShortfall(d).toLocaleString('ja-JP')}円分の商品を追加してください。`);
  if(d.kind==='meal'&&!products.some(p=>(d.cart[p.id]??0)>0))e.push('商品を1点以上選んでください。');
  if(d.kind==='meal'&&products.some(p=>!Number.isInteger(d.cart[p.id]??0)||(d.cart[p.id]??0)<0||(d.cart[p.id]??0)>30))e.push('商品数量は0〜30点で指定してください。');
  if(d.kind==='bbq'&&(!Number.isInteger(d.people)||d.people<1||d.people>30))e.push('BBQの人数は1〜30名で入力してください。');
@@ -65,11 +81,11 @@ export function consultationReasons(d:Draft):string[]{const r:string[]=[];
  return r;
 }
 export function referenceFee(d:Draft){return d.fulfillment==='takeout'||subtotal(d)>=10000?0:d.range==='outside'&&d.destType==='address'?2000:1000;}
-export function demoScenario(id:number):DemoState{const s=initialState();s.scenario=id;s.draft={...s.draft,cart:{bowl:2},date:tomorrow(),time:'17:30–18:00',handoff:false,destId:'demo-hotel1130',contactName:'確認用のお客様',contactPhone:'00000000000'};
- if(id===2)s.draft.destId='demo-sweetgrass';
- if(id===3){s.draft.destType='villa';s.draft.destId='demo-highland';}
+export function demoScenario(id:number):DemoState{const s=initialState();s.scenario=id;s.draft={...s.draft,cart:{bowl:4},date:tomorrow(),time:'17:30–18:00',handoff:false,destId:'F-001',contactName:'確認用のお客様',contactPhone:'00000000000'};
+ if(id===2)s.draft.destId='F-002';
+ if(id===3){s.draft.destType='villa';s.draft.destId='F-012';}
  if(id===4||id===5){s.draft.destType='address';s.draft.destId='';s.draft.address='デモ用：範囲外エリアの住所（実在住所の入力不要）';s.draft.meeting='入口で注文者ご本人と待ち合わせ（DEMO）';s.draft.range='outside';}
- if(id===6){s.draft.kind='bbq';s.draft.cart={};s.draft.people=6;s.draft.destId='demo-sweetgrass';}
+ if(id===6){s.draft.kind='bbq';s.draft.cart={};s.draft.people=6;s.draft.destId='F-002';}
  s.notice='ケースを読み込みました。入力内容は操作用の仮データです。';return s;}
 export type Action=
  |{type:'edit';patch:Partial<Draft>}|{type:'scenario';id:number}|{type:'reset'}|{type:'submit'}

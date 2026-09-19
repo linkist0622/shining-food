@@ -1,4 +1,4 @@
-# SHINING food — PWA preview v2.0
+# SHINING food — PWA preview v2.1
 
 公開先: https://shining-food-owner-demo.linkist39.chatgpt.site/
 GitHub: https://github.com/linkist0622/shining-food （preview/pwa-v2ブランチ）
@@ -49,7 +49,9 @@ pnpm dev
 
 元資料: SHINING_food_Pricing_Master.xlsx と SHINING_food_Research_and_Proposals_v1.0_20260918.md（2026-09-18調査）。廃止7群は表示を残して注文追加を停止。実店舗専用版やデリバリー終了の商品を配達可能に変更しません。テイクアウトも許諾未確認のため店舗相談に進みます。比較調査だけの51ブランドや追加提案2ブランドを正式候補へ拡張していません。
 
-F-001〜F-012はユーザー指示で全件表示。名称・所在地・実在施設との対応・許可は未照合。全件相談へ進みます。ホテル1130／スウィートグラス／浅間ハイランドパーク管理センターは別の操作例で、F番号との対応を推定していません。
+施設候補12件は、Pilot台帳 `SHINING_food_Pilot_Operations_Checksheet_v0.1_20260919.xlsx` の `04_施設実走!A4:B15` と照合した施設名を、一覧・注文先選択・注文詳細に表示します。F番号は内部の対応キーとして保持し、画面には出しません。ホテル1130／スウィートグラス／浅間ハイランドパークの別操作例は統合し、重複表示を解消しました。浅間ハイランドパークは「別荘地・管理センター」で選択します。全12件とも施設許可は未照会、初期配達可否は未判定のため、店舗確認・見積へ進みます。v0.2〜v0.4の存在は確認できましたが本文は取得できず、名称照合の直接根拠はv0.1です。
+
+最低注文金額はユーザー指示（2026-09-19）に基づき **3,980円**。追加のユーザー指示により、**デリバリーのみ（BBQの配達を含む）** に適用し、**テイクアウトは最低注文金額なし**。配達料を除く商品代金を基準としています。画面表示額は従来どおり税込想定。デリバリーで金額不足時は残額を示して申込みボタンを停止し、状態遷移側でも申込みを拒否します。正式価格・税の扱いは未確定です。
 
 配達料金はユーザーの暫定方針「5kmまで1000円／それ以上2000円／商品代10000円以上無料」を参考計算に反映しました。距離計算は未接続のため未判定は1000円を仮表示し、範囲外自己申告は2000円、10000円以上は0円。最終額は店舗確認・見積で調整します。商品代と送料の免除条件・距離の測り方は正式運用前に事業室で確定してください。
 
@@ -90,7 +92,7 @@ pnpm exec eslint app/page.tsx components/food lib/demo.ts lib/preview.ts --quiet
 pnpm build
 ```
 
-ブラウザー検証と残件は [docs/VERIFICATION.md](docs/VERIFICATION.md)、Stripe仕様は [docs/PAYMENTS.md](docs/PAYMENTS.md)、事業室への文案は [docs/HANDOFF.md](docs/HANDOFF.md) を参照。
+今回の再開状況・次の作業は [docs/CONTINUATION.md](docs/CONTINUATION.md)。ブラウザー検証と残件は [docs/VERIFICATION.md](docs/VERIFICATION.md)、Stripe仕様は [docs/PAYMENTS.md](docs/PAYMENTS.md)、事業室への文案は [docs/HANDOFF.md](docs/HANDOFF.md) を参照。
 
 ## 公開更新と戻し方
 
